@@ -7,6 +7,14 @@ const GeneralContainer = () => import('./components/general/GeneralContainer');
 const AuthContainer = () => import('./components/auth/AuthContainer');
 const Dashboard = () => import('./components/auth/Dashboard');
 const User = () => import('./components/auth/User');
+const LandContainer = () => import('./components/land/LandContainer');
+
+const Land = () => import('./components/land/Land1');
+const Detailes = () => import('./components/land/LandDetailes');
+const LandTable = () => import('./components/land/LandTable');
+const MachineTable = () => import('./components/land/MachineTable');
+const BuildingTable = () => import('./components/land/BuildingTable');
+
 export default {
     base: '/',
     mode: 'history',
@@ -44,8 +52,8 @@ export default {
                     ],
                 },
                 {
-                    path: '',
-                    redirect: { name: 'Dashboard' },
+                    path: '/',
+                    redirect: { name: 'FASS Land' },
                     component: AuthContainer,
                     beforeEnter: (to, from, next) => {
                         axios.get('/api/authenticated').then((response) => {
@@ -56,15 +64,25 @@ export default {
                     },
                     children: [
                         {
-                            path: 'dashboard',
-                            component: Dashboard,
-                            name: 'Dashboard',
+                            path: 'land_table',
+                            component: LandTable,
+                            name: 'FAAS Land',
                         },
                         {
-                            path: 'user',
+                            path: 'machine_table',
+                            component: MachineTable,
+                            name: 'FAAS Machine',
+                        },
+                        {
+                            path: 'building_table',
+                            component: BuildingTable,
+                            name: 'FAAS Building'
+                        },
+                        {
+                            path: 'statistics',
                             component: User,
-                            name: 'User'
-                        }
+                            name: 'FAAS Statistics'
+                        },
                     ]
                 },
             ]

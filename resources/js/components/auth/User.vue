@@ -7,5 +7,8 @@ export default {
     components: {
       UserForm
     },
+    mounted(){
+        this.$store.dispatch('updateMenu', false);
+    },
   }
 </script>

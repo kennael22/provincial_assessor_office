@@ -1,5 +1,5 @@
 <template>
-    <v-content>
+    <v-main>
         <v-container fluid fill-height>
             <v-layout align-center justify-center>
                 <v-flex xs12 sm8 md7 lg7 xl9>
@@ -86,7 +86,7 @@
                 </v-flex>
             </v-layout>
         </v-container>
-    </v-content>
+    </v-main>
 </template>
 
 <script>
@@ -140,10 +140,10 @@ export default {
             axios.get('/sanctum/csrf-cookie').then(response => {
                 axios.post('login', { username: this.username, password: this.password })
                 .then(response => {
-                    if(this.$route.name != 'Dashboard') {
+                    if(this.$route.name != 'FAAS Land') {
                         this.$v.$reset();
                         this.username = this.password = this.error_bag  = this.message = null;
-                        this.$router.push({name: 'Dashboard'});
+                        this.$router.push({name: 'FAAS Land'});
                     }
                 })
                 .catch(error => {

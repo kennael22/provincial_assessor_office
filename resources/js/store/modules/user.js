@@ -3,11 +3,15 @@ import axios from 'axios';
 const state = {
     auth_user: {},
     all_users: [],
+    app_bar_title: '',
+    user_active_menu: '',
 };
 
 const getters = {
     auth_user: state => state.auth_user,
     all_users: state => state.all_users,
+    app_bar_title: state => state.app_bar_title,
+    user_active_menu: state => state.user_active_menu
 };
 
 const actions = {
@@ -45,6 +49,12 @@ const actions = {
         });
         return response;
     },
+    async updateTitle({ commit }, title) {
+        commit('FETCH_APP_BAR_TITLE', title);
+    },
+    async updateMenu({ commit }, bool) {
+        commit('FETCH_USER_ACTIVE_MENU', bool);
+    }
 };
 
 const mutations = {
@@ -53,6 +63,12 @@ const mutations = {
     },
     FETCH_ALL_USERS: (state, users) => {
         state.all_users = users;
+    },
+    FETCH_APP_BAR_TITLE: (state, title) => {
+        state.app_bar_title = title;
+    },
+    FETCH_USER_ACTIVE_MENU: (state, bool) => {
+        state.user_active_menu = bool;
     }
 };
 

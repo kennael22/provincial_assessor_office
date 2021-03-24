@@ -29,41 +29,68 @@
                 nav
                 dense
             >
-                <v-list-item-group
-                    v-model="selectedItem"
-                    color="primary"
+                <v-list-group
+                    :value="listHighlight"
+                    prepend-icon="mdi-database"
                 >
+                    <template v-slot:activator>
+                    <v-list-item-title>Faas</v-list-item-title>
+                    </template>
                     <v-list-item
-                        v-for="(item, i) in items"
+                        v-for="([title, icon, to], i) in faas"
                         :key="i"
-                        :to="item.link"
+                        :to="{name:to}"
+                        @click="$store.dispatch('updateTitle', to);listHighlight=true"
                         link
                         style="text-decoration:none;"
                     >
+                        <v-list-item-title v-text="title"></v-list-item-title>
                         <v-list-item-icon>
-                            <v-icon v-text="item.icon"></v-icon>
+                        <v-icon v-text="icon"></v-icon>
                         </v-list-item-icon>
-
-                        <v-list-item-content>
-                            <v-list-item-title v-text="item.text"></v-list-item-title>
-                        </v-list-item-content>
                     </v-list-item>
+                </v-list-group>
+                <v-list-item-group
+                    :value="$router.currentRoute.name == 'FAAS Statistics'"
+                    color="primary"
+                >
+                <v-list-item
+                    v-for="([title, icon, to], i) in statistics"
+                    :key="i"
+                    :to="{ name : to }"
+                    @click="$store.dispatch('updateTitle', to);listHighlight=false"
+                    link
+                    style="text-decoration:none;"
+                >
+                    <v-list-item-icon>
+                    <v-icon v-text="icon"></v-icon>
+                    </v-list-item-icon>
+                    <v-list-item-title v-text="title"></v-list-item-title>
+                </v-list-item>
                 </v-list-item-group>
             </v-list>
-            <template v-slot:append>
-                <div class="pa-2">
-                <v-btn block @click.prevent="logout">
-                    Logout
-                </v-btn>
-                </div>
-            </template>
         </v-navigation-drawer>
         <v-app-bar app>
             <v-app-bar-nav-icon @click="drawer = !drawer">
-
             </v-app-bar-nav-icon>
-
-            <v-toolbar-title>SPA Sample</v-toolbar-title>
+            <v-toolbar-title v-text="title"></v-toolbar-title>
+            <v-spacer></v-spacer>
+            <div class="text-center d-flex align-center justify-space-around">
+                <v-tooltip bottom>
+                <template v-slot:activator="{ on, attrs }">
+                     <v-btn
+                     icon
+                     color="primary"
+                     dark
+                     v-bind="attrs"
+                     v-on="on"
+                     @click="logout">
+                    <v-icon>mdi-logout</v-icon>
+                    </v-btn>
+                </template>
+                <span>Logout</span>
+                </v-tooltip>
+            </div>
         </v-app-bar>
         <v-main>
             <v-container>
@@ -78,16 +105,32 @@ export default {
     data: () => ({
         drawer: null,
         selectedItem: 0,
-        items: [
-            { text: 'Dashboard', icon: 'mdi-desktop-mac-dashboard', link: 'dashboard'},
-            { text: 'Shared with me', icon: 'mdi-account-multiple', link: 'user' },
-            { text: 'Starred', icon: 'mdi-star' },
-            { text: 'Recent', icon: 'mdi-history' },
-            { text: 'Offline', icon: 'mdi-check-circle' },
-            { text: 'Uploads', icon: 'mdi-upload' },
-            { text: 'Backups', icon: 'mdi-cloud-upload' },
+        faas: [
+            ['Land', 'mdi-account-multiple-outline', 'FAAS Land'],
+            ['Building', 'mdi-cog-outline', 'FAAS Building'],
+            ['Machine','mdi-plus-outline', 'FAAS Machine'],
         ],
+        statistics: [
+            ['statistics', 'mdi-account-multiple-outline', 'FAAS Statistics'],
+        ]
     }),
+    computed: {
+        title:  {
+            get: function() { return this.$store.state.user.app_bar_title },
+            set: function(val) { this.$store.dispatch('updateTitle', val) }
+        },
+        listHighlight:{
+            get: function() { 
+                return this.$store.state.user.user_active_menu;
+            },
+            set: function(val) {
+                this.$store.dispatch('updateMenu', val)
+            }
+        }
+    },
+    mounted(){
+        this.title = this.$router.currentRoute.name;
+    },
     methods: {
         dashboardPage() {
 

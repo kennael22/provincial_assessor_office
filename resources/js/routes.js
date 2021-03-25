@@ -14,6 +14,7 @@ const Detailes = () => import('./components/land/LandDetailes');
 const LandTable = () => import('./components/land/LandTable');
 const MachineTable = () => import('./components/land/MachineTable');
 const BuildingTable = () => import('./components/land/BuildingTable');
+const BuildingDetails = () => import('./components/land/BuildingDetails');
 
 export default {
     base: '/',
@@ -82,6 +83,11 @@ export default {
                             path: 'statistics',
                             component: User,
                             name: 'FAAS Statistics'
+                        },
+                        {
+                            path: 'building_details',
+                            component: BuildingDetails,
+                            name: 'Building Details'
                         },
                     ]
                 },

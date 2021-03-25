@@ -5,13 +5,19 @@ const state = {
     all_users: [],
     app_bar_title: '',
     user_active_menu: '',
+    selected_land:'',
+    selected_building:'',
+    selected_machine:''
 };
 
 const getters = {
     auth_user: state => state.auth_user,
     all_users: state => state.all_users,
     app_bar_title: state => state.app_bar_title,
-    user_active_menu: state => state.user_active_menu
+    user_active_menu: state => state.user_active_menu,
+    selected_land: state => state.selected_land,
+    selected_building: state => state.selected_building,
+    selected_machine: state => state.selected_machine
 };
 
 const actions = {
@@ -54,6 +60,15 @@ const actions = {
     },
     async updateMenu({ commit }, bool) {
         commit('FETCH_USER_ACTIVE_MENU', bool);
+    },
+    async updateLand({ commit }, land) {
+        commit('FETCH_SELECTED_LAND', land);
+    },
+    async updateMachine({ commit }, machine) {
+        commit('FETCH_SELECTED_MACHINE', machine);
+    },
+    async updateBuilding({ commit }, building) {
+        commit('FETCH_SELECTED_BUILDING', building);
     }
 };
 
@@ -69,6 +84,15 @@ const mutations = {
     },
     FETCH_USER_ACTIVE_MENU: (state, bool) => {
         state.user_active_menu = bool;
+    },
+    FETCH_SELECTED_LAND: (state, land) => {
+        state.selected_land = land;
+    },
+    FETCH_SELECTED_BUILDING: (state, building) => {
+        state.selected_building = building;
+    },
+    FETCH_SELECTED_MACHINE: (state, machine) => {
+        state.selected_machine = machine;
     }
 };
 

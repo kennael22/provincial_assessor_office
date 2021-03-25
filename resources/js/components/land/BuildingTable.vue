@@ -102,6 +102,7 @@
                         >
                             <v-text-field
                             v-model="editedItem.landowner"
+                            readonly
                             label="Property Owner"
                             ></v-text-field>
                         </v-col>
@@ -112,6 +113,7 @@
                         >
                             <v-text-field
                             v-model="editedItem.arpnumber"
+                            readonly
                             label="ARP number"
                             ></v-text-field>
                         </v-col>
@@ -124,6 +126,7 @@
                         >
                             <v-text-field
                             v-model="editedItem.pin"
+                            readonly
                             label="PIN"
                             ></v-text-field>
                         </v-col>
@@ -134,6 +137,7 @@
                         >
                             <v-text-field
                             v-model="editedItem.taxcode"
+                            readonly
                             label="Tax Code"
                             ></v-text-field>
                         </v-col>
@@ -146,6 +150,7 @@
                         >
                             <v-text-field
                             v-model="editedItem.assesment"
+                            readonly
                             label="Assessment Value"
                             ></v-text-field>
                         </v-col>
@@ -156,6 +161,7 @@
                         >
                             <v-text-field
                             v-model="editedItem.landarea"
+                            readonly
                             label="Land Area"
                             ></v-text-field>
                         </v-col>
@@ -195,12 +201,30 @@
                             sm="4"
                             md="4"
                         >
-                            <v-combobox
-                            v-model="editedItem.reference"
-                            :items="items"
-                            label="Date"
-                            outlined
-                            ></v-combobox>
+                            <v-menu
+                                    v-model="menu2"
+                                    :close-on-content-click="false"
+                                    :nudge-right="40"
+                                    transition="scale-transition"
+                                    offset-y
+                                    min-width="auto"
+                                    >
+                                <template v-slot:activator="{ on, attrs }">
+                                    <v-text-field
+                                        v-model="date"
+                                        label="Picker without buttons"
+                                        prepend-inner-icon="mdi-calendar"
+                                        readonly
+                                        v-bind="attrs"
+                                        v-on="on"
+                                        outlined
+                                    ></v-text-field>
+                                </template>
+                                    <v-date-picker
+                                        v-model="date"
+                                        @input="menu2 = false"
+                                    ></v-date-picker>
+                                </v-menu>
                         </v-col>
                     </v-row>
                     <v-row>
@@ -275,13 +299,13 @@
       </v-toolbar>
     </template>
     <template v-slot:item.actions="{ item }">
-      <!-- <v-icon
+      <v-icon
       small
       class="mr-2"
-       @click="editViewItem(item, 'View Item')"
+       @click="viewItem(item);$store.dispatch('updateMenu',true)"
       >
       mdi-eye
-      </v-icon> -->
+      </v-icon>
       <v-icon
         small
         class="mr-2"
@@ -370,76 +394,57 @@
     methods: {
       initialize () {
         this.desserts=[{
-          propertyowner: 'F1rozen Yogurt',
+          propertyowner: 'Mark Dy',
           arpnumber: 6.0,
           pinnumber: 24,
           buildingnumber: 3,
           source: 1,
         },
         {
-          propertyowner: 'F2rozen Yogurt',
+          propertyowner: 'Paul Dy',
           arpnumber: 6.0,
           pinnumber: 24,
           buildingnumber: 3,
           source: 1,
         },
         {
-          propertyowner: 'F3rozen Yogurt',
+          propertyowner: 'Kenneth Solomon',
           arpnumber: 6.0,
           pinnumber: 24,
           buildingnumber: 3,
           source: 1,
         },
         {
-          propertyowner: 'F4rozen Yogurt',
+          propertyowner: 'John Paul Grefaldo',
           arpnumber: 6.0,
           pinnumber: 24,
           buildingnumber: 3,
           source: 1,
         },
         {
-          propertyowner: 'F5rozen Yogurt',
+          propertyowner: 'John Kevin Nogueara',
           arpnumber: 6.0,
           pinnumber: 24,
           buildingnumber: 3,
           source: 1,
         },
         {
-          propertyowner: 'F6rozen Yogurt',
-          arpnumber: 6.0,
-          pinnumber: 24,
-          buildingnumber: 3,
-          source: 1,
-        },
-        {
-          propertyowner: 'F7rozen Yogurt',
-          arpnumber: 6.0,
-          pinnumber: 24,
-          buildingnumber: 3,
-          source: 1,
-        },
-        {
-          propertyowner: 'F8rozen Yogurt',
-          arpnumber: 6.0,
-          pinnumber: 24,
-          buildingnumber: 3,
-          source: 1,
-        },
-        {
-          propertyowner: 'F9rozen Yogurt',
-          arpnumber: 6.0,
-          pinnumber: 24,
-          buildingnumber: 3,
-          source: 1,
-        },
-        {
-          propertyowner: 'F0rozen Yogurt',
+          propertyowner: 'Shannon Retuerma',
           arpnumber: 6.0,
           pinnumber: 24,
           buildingnumber: 3,
           source: 1,
         },
       ]
+      },
+      viewItem(item) {
+          if (this.$route.name !== "Building Details") {
+            this.$store.dispatch('updateBuilding',item);
+                this.$router.push({
+                    name: "Building Details",
+                    params: { item: item, id: item.id }
+                });
+            }
       },
       editItem (item, title) {
         this.title = title

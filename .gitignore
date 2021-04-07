@@ -10,4 +10,8 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
-/public/*
+public/css/app.css
+public/js/*
+public/[0-9]*
+public/fonts/*
+/public/fonts/vendor/@mdi

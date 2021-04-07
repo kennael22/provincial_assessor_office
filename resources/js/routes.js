@@ -15,6 +15,7 @@ const LandTable = () => import('./components/land/LandTable');
 const MachineTable = () => import('./components/land/MachineTable');
 const BuildingTable = () => import('./components/land/BuildingTable');
 const BuildingDetails = () => import('./components/land/BuildingDetails');
+const MachineDetails = () => import('./components/land/MachineDetails');
 
 export default {
     base: '/',
@@ -88,6 +89,11 @@ export default {
                             path: 'building_details',
                             component: BuildingDetails,
                             name: 'Building Details'
+                        },
+                        {
+                            path: 'machine_details',
+                            component: MachineDetails,
+                            name: 'Machine Details'
                         },
                     ]
                 },

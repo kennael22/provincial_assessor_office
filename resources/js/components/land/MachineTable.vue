@@ -153,6 +153,13 @@
       mdi-eye
       </v-icon> -->
       <v-icon
+      small
+      class="mr-2"
+      @click="viewItem(item)"
+      >
+      mdi-eye
+      </v-icon>
+      <v-icon
         small
         class="mr-2"
         @click="editItem(item, 'Edit Item')"
@@ -225,7 +232,6 @@
     created () {
       this.initialize()
     },
-
     methods: {
       initialize () {
         this.desserts=[{
@@ -299,6 +305,15 @@
           source: 1,
         },
       ]
+      },
+      viewItem(item) {
+          if (this.$route.name !== "Machine Details") {
+            this.$store.dispatch('updateMachine',item);
+                this.$router.push({
+                    name: "Machine Details",
+                    params: { item: item, id: item.id }
+                });
+            }
       },
       editItem (item, title) {
         this.title = title

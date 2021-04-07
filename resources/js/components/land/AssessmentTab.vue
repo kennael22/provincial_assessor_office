@@ -8,16 +8,20 @@
                     </v-col>
                     <v-col
                         cols="12" sm="6" md="6" align="right">
-                        <v-btn  color="primary"
+                        <v-btn  color="secondary"
                                 @click="addRow">
                                 Split
                                 </v-btn
                             >
-                        <v-btn  color="primary"
-                                @click="edit  = false">
-                                Edit
-                                </v-btn
+                        <v-btn
+                            color="success"
+                            @click="edit  = false"
                             >
+                            <v-icon left>
+                                mdi-pencil
+                            </v-icon>
+                            Edit
+                        </v-btn>
                     </v-col>
                 </v-row>
             </v-card-subtitle>
@@ -75,7 +79,7 @@
                     <v-row>
                         <v-col
                         cols="12"
-                        md="12"edit
+                        md="12"
                         sm="12">
                             <v-text-field
                             label="Rounded Value"
@@ -87,11 +91,6 @@
                     <v-row>
                         <v-col
                             cols="12" sm="12" md="12" align="right">
-                            <v-btn  color="primary"
-                                    width="150">
-                                    Save
-                                    </v-btn
-                                >
                             <v-btn v-if="rows.length > 1"  color="primary"
                                     width="150"
                                     @click="removeRow">
@@ -103,6 +102,54 @@
                 </v-container>
             </v-card-text>
             </div>
+            <v-row>
+                <v-col
+                    cols="12" sm="12" md="12" align="center">
+                    <v-btn  color="primary"
+                            width="150">
+                            Save
+                            </v-btn
+                        >
+                </v-col>
+            </v-row>
+            <v-card-text>
+                <v-container>
+                    <v-row>
+                        <v-col
+                        cols="12"
+                        md="12"
+                        sm="12">
+                            <v-text-field
+                            label="Taxability Value"
+                            value="Sample test"
+                            ></v-text-field>
+                        </v-col>    
+                    </v-row>
+                    <v-row>
+                        <v-col
+                        cols="12"
+                        md="12"
+                        sm="12">
+                            <v-text-field
+                            label="Effectivity Quarter"
+                            value="Sample test"
+                            ></v-text-field>
+                        </v-col>    
+                    </v-row>
+                    <v-row>
+                        <v-col
+                        cols="12"
+                        md="12"
+                        sm="12">
+                            <v-text-field
+                            label="Effectivity Year"
+                            readonly
+                            value="Sample test"
+                            ></v-text-field>
+                        </v-col>    
+                    </v-row>
+                </v-container>
+            </v-card-text>
         </v-card>
     
 </template>

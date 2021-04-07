@@ -272,12 +272,20 @@
                             ></v-text-field>
                         </v-col>
                     </v-row>
-                    <v-row justify="center" class="mb-5">
-                        <v-btn  color="primary"
-                            >
-                            Add more floors
-                            </v-btn
+                    <v-row
+                        align="center"
+                        justify="space-around"
+                        class="mb-5"
+                    >
+                        <v-btn
+                        large
+                        color="success"
                         >
+                        <v-icon left>
+                            mdi-plus
+                        </v-icon>
+                        Add Floor
+                        </v-btn>
                     </v-row>
                     <v-row>
                         <v-col
@@ -291,12 +299,19 @@
                             ></v-text-field>
                         </v-col>
                     </v-row>
-                    <v-row justify="center" class="mb-5">
-                        <v-btn  color="primary"
-                            >
-                            Save
-                            </v-btn
+                    <v-row
+                        align="center"
+                        justify="space-around"
+                    >
+                        <v-btn
+                        large
+                        color="primary"
                         >
+                        <v-icon left>
+                            mdi-content-save
+                        </v-icon>
+                        Save
+                        </v-btn>
                     </v-row>
                 </v-container>
             </v-card-text>

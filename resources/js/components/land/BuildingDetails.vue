@@ -94,7 +94,7 @@
             </v-card-text>    
         </v-card>
         <v-tabs
-            class="mt-5"
+            class="mt-5 mb-20"
             fixed-tabs
             background-color="primary"
             dark
@@ -135,6 +135,18 @@
             <v-tab-item>
                 <assessment-tab/>
             </v-tab-item>
+            <v-tab-item>
+                <signatories-tab/>
+            </v-tab-item>
+            <v-tab-item>
+                <memoranda-tab/>
+            </v-tab-item>
+            <v-tab-item>
+                <history-tab/>
+            </v-tab-item>
+            <v-tab-item>
+                <payment-tab/>
+            </v-tab-item>
         </v-tabs>
     </v-card>
 </template>
@@ -143,12 +155,20 @@ import GeneralTab from '../land/GeneralTab'
 import BuildingStructureTab from '../land/BuildingStructureTab'
 import AppraisalTab from '../land/AppraisalTab'
 import AssessmentTab from '../land/AssessmentTab'
+import SignatoriesTab from '../land/SignatoriesTab'
+import MemorandaTab from '../land/MemorandaTab'
+import HistoryTab from '../land/HistoryTab'
+import PaymentTab from '../land/PaymentTab'
 export default {
     components:{
         GeneralTab,
         BuildingStructureTab,
         AppraisalTab,
-        AssessmentTab
+        AssessmentTab,
+        SignatoriesTab,
+        MemorandaTab,
+        HistoryTab,
+        PaymentTab
     },
     data(){
         return {

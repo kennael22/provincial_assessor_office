@@ -26,13 +26,21 @@
                         ></v-combobox>
                     </v-col>
                 </v-row>
-                <v-row justify="center" class="mb-5">
-                    <v-btn  color="primary"
-                        >
-                        Add more floors
-                        </v-btn
+                <v-row
+                        align="center"
+                        justify="space-around"
+                        class="mb-5"
                     >
-                </v-row>
+                        <v-btn
+                        large
+                        color="success"
+                        >
+                        <v-icon left>
+                            mdi-plus
+                        </v-icon>
+                        Add Floor
+                        </v-btn>
+                    </v-row>
                 <v-row>
                     <v-col
                     cols="12"
@@ -45,13 +53,21 @@
                         ></v-combobox>
                     </v-col> 
                 </v-row>
-                <v-row justify="center" class="mb-5">
-                    <v-btn  color="primary"
-                        >
-                        Add more floors
-                        </v-btn
+                <v-row
+                        align="center"
+                        justify="space-around"
+                        class="mb-5"
                     >
-                </v-row>
+                        <v-btn
+                        large
+                        color="success"
+                        >
+                        <v-icon left>
+                            mdi-plus
+                        </v-icon>
+                        Add Floor
+                        </v-btn>
+                    </v-row>
             </v-container>
         </v-card-text>
     </v-card>

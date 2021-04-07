@@ -65,6 +65,7 @@
                   >
                     <v-text-field
                       v-model="editedItem.propertyowner"
+                      prepend-inner-icon="mdi-account"
                       label="Property Owner"
                     ></v-text-field>
                   </v-col>
@@ -76,6 +77,7 @@
                     <v-text-field
                       v-model="editedItem.code"
                       label="code"
+                      prepend-inner-icon="mdi-card-account-details-outline"
                     ></v-text-field>
                   </v-col>
                   <v-col
@@ -86,6 +88,7 @@
                     <v-text-field
                       v-model="editedItem.arpnumber"
                       label="ARP Number"
+                      prepend-inner-icon="mdi-card-account-details-outline"
                     ></v-text-field>
                   </v-col>
                   <v-col
@@ -96,6 +99,7 @@
                     <v-text-field
                       v-model="editedItem.pinnumber"
                       label="Pin Number"
+                      prepend-inner-icon="mdi-card-account-details-outline"
                     ></v-text-field>
                   </v-col>
                   <v-col
@@ -106,6 +110,7 @@
                     <v-text-field
                       v-model="editedItem.claimant"
                       label="claimant"
+                      prepend-inner-icon="mdi-account"
                     ></v-text-field>
                   </v-col>
                 </v-row>

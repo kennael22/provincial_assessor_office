@@ -31,16 +31,22 @@
         <v-row>
             <v-col
                 cols="12" sm="12" md="12" align="right">
-                <v-btn  color="primary"
-                        width="150">
-                        Edit
-                        </v-btn
+                <v-btn
+                    color="success"
+                    width="150"
                     >
-                <v-btn  color="primary"
-                        width="150">
-                        Compute
-                        </v-btn
-                    >
+                    <v-icon left>
+                        mdi-pencil
+                    </v-icon>
+                    Edit
+                </v-btn>
+                <v-btn  color="info"
+                    width="150">
+                    <v-icon left>
+                      mdi-information-variant
+                      </v-icon>
+                    Compute
+                </v-btn>
             </v-col>
         </v-row>
       </v-card-text>

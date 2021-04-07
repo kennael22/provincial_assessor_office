@@ -9,6 +9,7 @@
           <v-text-field
             v-model="first"
             label="Property Owner"
+            prepend-inner-icon="mdi-account"
             outlined
           ></v-text-field>
         </v-col>
